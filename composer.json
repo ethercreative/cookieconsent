@@ -1,0 +1,14 @@
+{
+	"name": "ethercreative/cookieconsent",
+	"description": "Simple cookie consent plugin",
+	"type": "craft-plugin",
+	"authors": [
+		{
+			"name": "ethercreative",
+			"homepage": "https://ethercreative.co.uk"
+		}
+	],
+	"require": {
+		"composer/installers": "~1.0"
+	}
+}
