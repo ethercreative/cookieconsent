@@ -12,6 +12,8 @@
  */
 #}
 
+
+
 {% includeCssResource "lib/redactor/redactor.css" %}
 {% includeJsResource "lib/redactor/redactor.js" %}
 
@@ -22,8 +24,7 @@
 
 
 
-
-{# {% set selectedSubnavItem = 'settings' %} #}
+{# {% set selectedSubnavItem = 'settings' %}
 
 {% set navItems = {} %}
 
@@ -34,9 +35,11 @@
     }|merge(navItems) %}
 {% endif %}
 
-{% set selectedItem = craft.request.getSegment(1) %}
+{% set selectedItem = craft.request.getSegment(3) %}
 
+{% extends "_layouts/cp" %}
 
+{% block sidebar %}
 <div id="sidebar" class="sidebar">
     <nav>
         <ul>
@@ -50,7 +53,7 @@
         </ul>
     </nav>
 </div>
-
+{% endblock %} #}
 
 {{ forms.selectField({
     label: 'Cookie Icon',
@@ -95,6 +98,7 @@
     id: 'consentExpiry',
     name: 'consentExpiry',
     value: settings['consentExpiry'],
+    type: 'number',
     required: true,
 }) }}
 
@@ -104,6 +108,7 @@
     id: 'nonConsentExpiry',
     name: 'nonConsentExpiry',
     value: settings['nonConsentExpiry'],
+    type: 'number',
     required: true,
 }) }}
 
