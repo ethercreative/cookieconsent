@@ -1,8 +1,8 @@
+![Cookie Consent](resources/screenshots/banner.jpg)
+
 # Cookie Consent plugin for Craft CMS
 
 Simple cookie consent plugin
-
-![Screenshot](resources/screenshots/plugin_logo.png)
 
 ## Installation
 
