@@ -5,7 +5,7 @@
 		"input": "resources/less/layout.less",
 		"output": "resources/css/layout.css",
 		"watch": [
-			"less/layout.less"
+			"resources/less/layout.less"
 		]
 	},
 	"js": {
