@@ -72,14 +72,23 @@ class CookieConsentService extends BaseApplicationComponent
 
 		craft()->templates->includeJs('window.ether_cookie_settings = ' . json_encode($state));
 
+		$js = UrlHelper::getResourceUrl('cookieconsent/js/gdpr.min.js');
+
 		craft()->templates->includeJs("
 const ether_script = document.createElement('script');
-ether_script.src = 'https://gdpr.ether/js/gdpr.min.js';
+ether_script.src = '{$js}';
 ether_script.defer = true;
 document.body.appendChild(ether_script);
 ");
 
-		craft()->templates->includeCssFile('https://gdpr.ether/css/layout.css');
+		$css = UrlHelper::getResourceUrl('cookieconsent/css/layout.css');
+
+		craft()->templates->includeJs("
+const ether_style = document.createElement('link');
+ether_style.href = '{$css}';
+ether_style.rel = 'stylesheet';
+document.body.appendChild(ether_style);
+");
 	}
 
 	public function checkConsent()

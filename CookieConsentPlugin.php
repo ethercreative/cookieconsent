@@ -215,5 +215,4 @@ class CookieConsentPlugin extends BasePlugin
 	{
 		return $settings;
 	}
-
 }
