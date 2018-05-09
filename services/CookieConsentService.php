@@ -81,4 +81,14 @@ document.body.appendChild(ether_script);
 
 		craft()->templates->includeCssFile('https://gdpr.ether/css/layout.css');
 	}
+
+	public function checkConsent()
+	{
+		$settings = craft()->plugins->getPlugin('cookieConsent')->getSettings();
+
+		$cookieName = 'accepted_ether_cookies';
+		$accepted = $_COOKIE[$cookieName] ?? null;
+
+		return $accepted;
+	}
 }

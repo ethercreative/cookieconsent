@@ -7,4 +7,9 @@ class CookieConsentVariable
 	{
 		return craft()->cookieConsent->insert();
 	}
+
+	public function check()
+	{
+		return craft()->cookieConsent->checkConsent();
+	}
 }
