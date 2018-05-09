@@ -180,6 +180,7 @@ class CookieConsentPlugin extends BasePlugin
 			'nonConsentExpiry' => array(AttributeType::String, 'label' => 'Non-Consent Expiry', 'default' => ''),
 
 			/** Content Page **/
+			'cookieName' => array(AttributeType::String, 'label' => 'Initial Request Message', 'default' => 'accepted_ether_cookies'),
 			'requestMessage' => array(AttributeType::String, 'label' => 'Initial Request Message', 'default' => ''),
 			'consentMessage' => array(AttributeType::String, 'label' => 'Consent Message', 'default' => ''),
 			'consentStatusYes' => array(AttributeType::String, 'label' => 'Consent Status: Yes', 'default' => ''),

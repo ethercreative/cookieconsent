@@ -9,7 +9,7 @@ class CookieConsentService extends BaseApplicationComponent
 
 		$url = craft()->getSiteUrl();
 		$icon = UrlHelper::getResourceUrl('cookieconsent/images/' . strtolower($settings->cookieIcon) . '.png');
-		$cookieName = 'accepted_ether_cookies'; // to be in CMS
+		$cookieName = $settings->cookieName; // to be in CMS
 		$accepted = $_COOKIE[$cookieName] ?? null;
 		$time = $_COOKIE[$cookieName . '_time'] ?? 0;
 		$stage = 'default';
@@ -86,7 +86,7 @@ document.body.appendChild(ether_script);
 	{
 		$settings = craft()->plugins->getPlugin('cookieConsent')->getSettings();
 
-		$cookieName = 'accepted_ether_cookies';
+		$cookieName = $settings->cookieName;
 		$accepted = $_COOKIE[$cookieName] ?? null;
 
 		return $accepted;

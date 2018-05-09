@@ -19,6 +19,15 @@
 
 {% includeJsResource "cookieconsent/js/cp.js" %}
 
+{{ forms.textField({
+	id: 'cookieName',
+	instructions: 'Set the name of the consent cookie.',
+	label: 'Cookie Name',
+	name: 'cookieName',
+	required: true,
+	value: settings['cookieName'],
+}) }}
+
 {{ forms.selectField({
 	id: 'cookieIcon',
 	instructions: 'Select the icon you\'d like to use for the front end.',
