@@ -1,0 +1,146 @@
+{#
+/**
+ * Cookie Consent plugin for Craft CMS
+ *
+ * Cookie Consent Settings.twig
+ *
+ * @author    ethercreative
+ * @copyright Copyright (c) 2018 ethercreative
+ * @link      https://ethercreative.co.uk
+ * @package   CookieConsent
+ * @since     1.0.0
+ */
+#}
+
+{% includeCssResource "lib/redactor/redactor.css" %}
+{% includeJsResource "lib/redactor/redactor.js" %}
+
+{% import "_includes/forms" as forms %}
+
+{% includeJsResource "cookieconsent/js/cp.js" %}
+
+{{ forms.selectField({
+	id: 'cookieIcon',
+	instructions: 'Select the icon you\'d like to use for the front end.',
+	label: 'Cookie Icon',
+	name: 'cookieIcon',
+	options: ['Friendly', 'Minimal'],
+	required: true,
+	value: settings['cookieIcon'],
+}) }}
+
+{{ forms.colorField({
+	id: 'primaryColor',
+	instructions: 'Set the primary color to be used on the cookie widget.',
+	label: 'Primary Color',
+	name: 'primaryColor',
+	required: true,
+	value: settings['primaryColor'],
+}) }}
+
+{{ forms.colorField({
+	id: 'secondaryColor',
+	instructions: 'Set the secondary color to be used on the cookie widget.',
+	label: 'Secondary Color',
+	name: 'secondaryColor',
+	required: true,
+	value: settings['secondaryColor'],
+}) }}
+
+{{ forms.textField({
+	id: 'scriptInclude',
+	instructions: 'Set the location of the template partial that includes all your perfomance cookies.',
+	label: 'Script Include',
+	name: 'scriptInclude',
+	value: settings['scriptInclude'],
+}) }}
+
+{{ forms.textField({
+	id: 'consentExpiry',
+	instructions: 'Set the number of days before the consent cookie expires.',
+	label: 'Consent Expiry',
+	name: 'consentExpiry',
+	required: true,
+	type: 'number',
+	value: settings['consentExpiry'],
+}) }}
+
+{{ forms.textField({
+	id: 'nonConsentExpiry',
+	instructions: 'Set the number of days before the non-consent cookie expires.',
+	label: 'Non-consent Expiry',
+	name: 'nonConsentExpiry',
+	required: true,
+	type: 'number',
+	value: settings['nonConsentExpiry'],
+}) }}
+
+{{ forms.textAreaField({
+	class: 'redactorField',
+	id: 'requestMessage',
+	instructions: '[desc]',
+	label: 'Initial Request Message',
+	name: 'requestMessage',
+	required: true,
+	value: settings['requestMessage'],
+}) }}
+
+{{ forms.textAreaField({
+	class: 'redactorField',
+	id: 'consentMessage',
+	instructions: 'This is what the user will see if they give consent.',
+	label: 'Consent Given Message',
+	name: 'consentMessage',
+	required: true,
+	value: settings['consentMessage'],
+}) }}
+
+{{ forms.textAreaField({
+	class: 'redactorField',
+	id: 'consentStatusYes',
+	instructions: 'This is what the user will see if they trigger the cookie widget and they\'ve given consent.',
+	label: 'Consent Status: Yes',
+	name: 'consentStatusYes',
+	required: true,
+	value: settings['consentStatusYes'],
+}) }}
+
+{{ forms.textAreaField({
+	class: 'redactorField',
+	id: 'consentStatusNo',
+	instructions: 'This is what the user will see if they trigger the cookie widget and they haven\'t given consent.',
+	label: 'Consent Status: No',
+	name: 'consentStatusNo',
+	required: true,
+	value: settings['consentStatusNo'],
+}) }}
+
+{{ forms.textAreaField({
+	class: 'redactorField',
+	id: 'prefOverview',
+	instructions: 'This text shows at the top of the cookie preferences modal.',
+	label: 'Preference Overview',
+	name: 'prefOverview',
+	required: true,
+	value: settings['prefOverview'],
+}) }}
+
+{{ forms.textAreaField({
+	class: 'redactorField',
+	id: 'prefNecessaryCookies',
+	instructions: 'Overview of the necessary cookies being used.',
+	label: 'Necessary Cookies Overview',
+	name: 'prefNecessaryCookies',
+	required: true,
+	value: settings['prefNecessaryCookies'],
+}) }}
+
+{{ forms.textAreaField({
+	class: 'redactorField',
+	id: 'prefPerformanceCookies',
+	instructions: 'Overview of the performance cookies being used.',
+	label: 'Performance Cookies Overview',
+	name: 'prefPerformanceCookies',
+	required: true,
+	value: settings['prefPerformanceCookies'],
+}) }}

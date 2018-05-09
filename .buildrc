@@ -1,0 +1,32 @@
+{
+	"manifest": "",
+	"less": {
+		"ignore": false,
+		"input": "resources/less/layout.less",
+		"output": "resources/css/layout.css",
+		"watch": [
+			"less/layout.less"
+		]
+	},
+	"js": {
+		"ignore": false,
+		"input": "resources/js/gdpr.js",
+		"output": "resources/js/gdpr.min.js",
+		"watch": [
+			"resources/js/gdpr.js",
+			"!resources/js/gdpr.min.js"
+		]
+	},
+	"critical": {
+		"ignore": true,
+		"base": "",
+		"output": "",
+		"paths": {}
+	},
+	"browserSync": {
+		"ignore": true,
+		"proxy": "",
+		"watch": []
+	},
+	"__isDefault": true
+}

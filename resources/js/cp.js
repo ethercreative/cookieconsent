@@ -1,7 +1,7 @@
 /**
  * Cookie Consent plugin for Craft CMS
  *
- * Cookie Consent CSS
+ * Cookie Consent JS
  *
  * @author    ethercreative
  * @copyright Copyright (c) 2018 ethercreative
@@ -9,3 +9,9 @@
  * @package   CookieConsent
  * @since     1.0.0
  */
+
+ (function() {
+	 $('.redactorField').redactor({
+		 buttons: ['bold', 'italic', 'link']
+	 });
+ })();
