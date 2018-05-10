@@ -247,13 +247,19 @@ class EtherCookies
 		this.state.stage = 'declined';
 	}
 
-	acceptCookies()
+	acceptCookies(refresh = false)
 	{
 		const time = new Date().getTime();
 		const cookieLength = parseInt(this.state.cookieLength);
 
 		Cookies.set(this.state.cookieName, 'true', { expires: cookieLength, path: '/' });
 		Cookies.set(this.state.cookieName + '_time', time, { cookieLength, path: '/' });
+
+		if(refresh)
+		{
+			window.location.reload();
+			return;
+		}
 
 		this.state.stage = 'accepted';
 
@@ -302,7 +308,7 @@ class EtherCookies
 			break;
 
 			default:
-				this.acceptCookies();
+				this.acceptCookies(true);
 			break;
 		}
 	}
