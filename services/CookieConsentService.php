@@ -38,11 +38,6 @@ class CookieConsentService extends BaseApplicationComponent
 				'accept' => 'Manage cookie preferences',
 				'description' => $settings->consentStatusNo
 			],
-			'accepted' => [
-				'close' => 'Close',
-				'accept' => 'Close message',
-				'description' => $settings->consentMessage
-			],
 			'already_accepted' => [
 				'close' => 'Close',
 				'accept' => 'Manage cookie preferences',

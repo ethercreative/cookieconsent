@@ -182,9 +182,9 @@ class CookieConsentPlugin extends BasePlugin
 			/** Content Page **/
 			'cookieName' => array(AttributeType::String, 'label' => 'Initial Request Message', 'default' => 'accepted_ether_cookies'),
 			'requestMessage' => array(AttributeType::String, 'label' => 'Initial Request Message', 'default' => ''),
-			'consentMessage' => array(AttributeType::String, 'label' => 'Consent Message', 'default' => ''),
 			'consentStatusYes' => array(AttributeType::String, 'label' => 'Consent Status: Yes', 'default' => ''),
 			'consentStatusNo' => array(AttributeType::String, 'label' => 'Consent Status: No', 'default' => ''),
+			'prefSubtitle' => array(AttributeType::String, 'label' => 'Preferences Subtitle', 'default' => ''),
 			'prefOverview' => array(AttributeType::String, 'label' => 'Preference Overview', 'default' => ''),
 			'prefNecessaryCookies' => array(AttributeType::String, 'label' => 'Necessary Cookies Overview', 'default' => ''),
 			'prefPerformanceCookies' => array(AttributeType::String, 'label' => 'Performance Cookies Overview', 'default' => '')

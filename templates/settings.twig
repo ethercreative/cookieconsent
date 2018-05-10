@@ -96,16 +96,6 @@
 
 {{ forms.textAreaField({
 	class: 'redactorField',
-	id: 'consentMessage',
-	instructions: 'This is what the user will see if they give consent.',
-	label: 'Consent Given Message',
-	name: 'consentMessage',
-	required: true,
-	value: settings['consentMessage'],
-}) }}
-
-{{ forms.textAreaField({
-	class: 'redactorField',
 	id: 'consentStatusYes',
 	instructions: 'This is what the user will see if they trigger the cookie widget and they\'ve given consent.',
 	label: 'Consent Status: Yes',
