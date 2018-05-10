@@ -240,7 +240,7 @@ class EtherCookies
 		window.location.reload();
 	}
 
-	acceptCookies(refresh = false)
+	acceptCookies()
 	{
 		const time = new Date().getTime();
 		const cookieLength = parseInt(this.state.cookieLength);
