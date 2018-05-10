@@ -10,11 +10,11 @@
 	},
 	"js": {
 		"ignore": false,
-		"input": "resources/js/gdpr.js",
-		"output": "resources/js/gdpr.min.js",
+		"input": "resources/js/cookies.js",
+		"output": "resources/js/cookies.min.js",
 		"watch": [
-			"resources/js/gdpr.js",
-			"!resources/js/gdpr.min.js"
+			"resources/js/cookies.js",
+			"!resources/js/cookies.min.js"
 		]
 	},
 	"critical": {

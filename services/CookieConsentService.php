@@ -9,7 +9,7 @@ class CookieConsentService extends BaseApplicationComponent
 
 		$url = craft()->getSiteUrl();
 		$icon = UrlHelper::getResourceUrl('cookieconsent/images/' . strtolower($settings->cookieIcon) . '.png');
-		$cookieName = $settings->cookieName; // to be in CMS
+		$cookieName = $settings->cookieName;
 		$accepted = $_COOKIE[$cookieName] ?? null;
 		$time = $_COOKIE[$cookieName . '_time'] ?? 0;
 		$stage = 'default';
@@ -23,7 +23,7 @@ class CookieConsentService extends BaseApplicationComponent
 		$state = [
 			'baseUrl' => craft()->getSiteUrl(),
 			'icon' => $icon,
-			'cookieName' => 'accepted_ether_cookies', // to be in settings
+			'cookieName' => $cookieName,
 			'cookieLength' => $settings->consentExpiry,
 			'time' => $time,
 			'stage' => $stage,
@@ -81,7 +81,7 @@ ether_style.rel = 'stylesheet';
 document.body.appendChild(ether_style);
 ");
 
-		$js = UrlHelper::getResourceUrl('cookieconsent/js/gdpr.min.js');
+		$js = UrlHelper::getResourceUrl('cookieconsent/js/cookies.min.js');
 
 		craft()->templates->includeJs("
 const ether_script = document.createElement('script');

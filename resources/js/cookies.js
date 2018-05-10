@@ -1,17 +1,15 @@
 import Cookies from 'cookies-js';
 
-class GDPR
+class EtherCookies
 {
 	constructor()
 	{
-		this.initGDPR();
+		this.initCookies();
 	}
 
-	initGDPR()
+	initCookies()
 	{
 		this.state = window.ether_cookie_settings;
-
-		console.log(this.state);
 
 		this.createPopover();
 		this.createBtn();
@@ -23,7 +21,7 @@ class GDPR
 		this.stage = this.state[this.state.stage];
 
 		this.popover = document.createElement('div');
-		this.popover.id = 'ether_gdpr';
+		this.popover.id = 'ether_cookies';
 
 		if(this.state.stage !== 'default')
 			this.popover.classList.add('hidden');
@@ -58,6 +56,7 @@ class GDPR
 
 		this.acceptBtn = document.createElement('a');
 		this.acceptBtn.classList.add('e_accept');
+		this.acceptBtn.classList.add('e_cta');
 		this.acceptBtn.innerText = this.stage.accept;
 		this.acceptBtn.addEventListener('click', this.cta.bind(this));
 
@@ -84,7 +83,7 @@ class GDPR
 	createBtn()
 	{
 		this.btn = document.createElement('a');
-		this.btn.id = 'ether_gdpr_btn';
+		this.btn.id = 'ether_cookies_btn';
 		this.btn.addEventListener('click', this.togglePopover.bind(this));
 
 		if(this.state.stage !== 'default')
@@ -103,7 +102,7 @@ class GDPR
 	createModal()
 	{
 		this.modal = document.createElement('div');
-		this.modal.id = 'ether_gdpr_modal';
+		this.modal.id = 'ether_cookies_modal';
 
 		// bg
 
@@ -171,7 +170,6 @@ class GDPR
 			label.classList.add('e_label');
 
 			const checkbox = document.createElement('input');
-
 			checkbox.type = 'checkbox';
 			checkbox.checked = toggle.checked;
 
@@ -214,6 +212,7 @@ class GDPR
 
 		const close = document.createElement('a');
 		close.classList.add('e_close');
+		close.classList.add('e_cta');
 		close.innerText = 'Close preferences';
 		close.addEventListener('click', this.closeModal.bind(this));
 
@@ -318,4 +317,4 @@ class GDPR
 	}
 }
 
-new GDPR();
+new EtherCookies();
