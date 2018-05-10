@@ -7,12 +7,14 @@ class CookieConsentService extends BaseApplicationComponent
 	{
 		$settings = craft()->plugins->getPlugin('cookieConsent')->getSettings();
 
-		$url = craft()->getSiteUrl();
+		$url = str_replace('www.', '', $_SERVER['SERVER_NAME']);
 		$icon = UrlHelper::getResourceUrl('cookieconsent/images/' . strtolower($settings->cookieIcon) . '.png');
 		$cookieName = $settings->cookieName;
 		$accepted = $_COOKIE[$cookieName] ?? null;
 		$time = $_COOKIE[$cookieName . '_time'] ?? 0;
 		$stage = 'default';
+
+		print_r($_SERVER);
 
 		if($accepted === 'false')
 			$stage = 'declined';
@@ -20,8 +22,11 @@ class CookieConsentService extends BaseApplicationComponent
 		if($accepted === 'true')
 			$stage = 'already_accepted';
 
+		if($time !== 0)
+			$time = date('jS F Y \a\t H:m', ($time / 1000));
+
 		$state = [
-			'baseUrl' => craft()->getSiteUrl(),
+			'siteUrl' => $url,
 			'icon' => $icon,
 			'cookieName' => $cookieName,
 			'cookieLength' => $settings->consentExpiry,
@@ -41,7 +46,7 @@ class CookieConsentService extends BaseApplicationComponent
 			'already_accepted' => [
 				'close' => 'Close',
 				'accept' => 'Manage cookie preferences',
-				'description' => $settings->consentStatusYes
+				'description' => str_replace('{date_time}', $time, $settings->consentStatusYes)
 			],
 			'modal' => [
 				'title' => 'Cookie Preferences',
