@@ -71,21 +71,22 @@ class CookieConsentService extends BaseApplicationComponent
 		craft()->templates->includeJs('window.ether_cookie_settings = ' . json_encode($state));
 
 		$css = UrlHelper::getResourceUrl('cookieconsent/css/layout.css');
+		$js = UrlHelper::getResourceUrl('cookieconsent/js/cookies.min.js');
 
 		craft()->templates->includeJs("
 const ether_style = document.createElement('link');
 ether_style.href = '{$css}';
 ether_style.rel = 'stylesheet';
+
+ether_style.addEventListener('load', function()
+{
+	const ether_script = document.createElement('script');
+	ether_script.src = '{$js}';
+	ether_script.defer = true;
+	document.body.appendChild(ether_script);
+});
+
 document.head.appendChild(ether_style);
-");
-
-		$js = UrlHelper::getResourceUrl('cookieconsent/js/cookies.min.js');
-
-		craft()->templates->includeJs("
-const ether_script = document.createElement('script');
-ether_script.src = '{$js}';
-ether_script.defer = true;
-document.body.appendChild(ether_script);
 ");
 
 		craft()->templates->includeCss("
