@@ -1,4 +1,4 @@
-import Cookies from 'cookies-js';
+import Cookies from 'js-cookie';
 
 class EtherCookies
 {
@@ -235,7 +235,7 @@ class EtherCookies
 	{
 		const cookieLength = parseInt(this.state.cookieLength);
 
-		Cookies.set(this.state.cookieName, 'false', { expires: cookieLength, path: '/' });
+		Cookies.set(this.state.cookieName, 'false', { expires: cookieLength });
 
 		window.location.reload();
 	}
@@ -245,8 +245,8 @@ class EtherCookies
 		const time = new Date().getTime();
 		const cookieLength = parseInt(this.state.cookieLength);
 
-		Cookies.set(this.state.cookieName, 'true', { expires: cookieLength, path: '/' });
-		Cookies.set(this.state.cookieName + '_time', time, { cookieLength, path: '/' });
+		Cookies.set(this.state.cookieName, 'true', { expires: cookieLength });
+		Cookies.set(this.state.cookieName + '_time', time, { cookieLength });
 
 		window.location.reload();
 	}

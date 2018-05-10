@@ -1,5 +1,5 @@
 {
   "dependencies": {
-    "cookies-js": "^1.2.3"
+    "js-cookie": "^2.2.0"
   }
 }
