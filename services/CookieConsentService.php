@@ -18,7 +18,7 @@ class CookieConsentService extends BaseApplicationComponent
 			$stage = 'declined';
 
 		if($accepted === 'true')
-			$stage = 'already_accepted';
+			$stage = 'accepted';
 
 		if($time !== 0)
 			$time = date('jS F Y \a\t H:m', ($time / 1000));
@@ -41,7 +41,7 @@ class CookieConsentService extends BaseApplicationComponent
 				'accept' => 'Manage cookie preferences',
 				'description' => $settings->consentStatusNo
 			],
-			'already_accepted' => [
+			'accepted' => [
 				'close' => 'Close',
 				'accept' => 'Manage cookie preferences',
 				'description' => str_replace('{date_time}', $time, $settings->consentStatusYes)

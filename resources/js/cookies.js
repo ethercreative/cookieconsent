@@ -10,6 +10,7 @@ class EtherCookies
 	initCookies()
 	{
 		this.state = window.ether_cookie_settings;
+		this.updated = false;
 
 		this.createPopover();
 		this.createBtn();
@@ -59,7 +60,7 @@ class EtherCookies
 		this.acceptBtn.classList.add('e_cta');
 		this.acceptBtn.classList.add('e_primary_btn');
 		this.acceptBtn.innerText = this.stage.accept;
-		this.acceptBtn.addEventListener('click', this.cta.bind(this));
+		this.acceptBtn.addEventListener('click', this.popoverCta.bind(this));
 
 		if(this.state.stage !== 'default')
 			this.acceptBtn.classList.add('e_secondary_btn');
@@ -69,19 +70,6 @@ class EtherCookies
 		document.body.appendChild(this.popover);
 
 		setTimeout(() => this.popover.classList.add('active'), 1500);
-	}
-
-	togglePopover()
-	{
-		if(this.state.stage === 'accepted')
-			this.state.stage = 'already_accepted';
-
-		this.updateText();
-
-		this.popover.classList.toggle('hidden');
-
-		if(this.state.stage !== 'default')
-			this.btn.classList.toggle('managed');
 	}
 
 	createBtn()
@@ -214,14 +202,14 @@ class EtherCookies
 
 		content.appendChild(switches);
 
-		const close = document.createElement('a');
-		close.classList.add('e_close');
-		close.classList.add('e_cta');
-		close.classList.add('e_secondary_btn');
-		close.innerText = 'Close preferences';
-		close.addEventListener('click', this.closeModal.bind(this));
+		this.modalClose = document.createElement('a');
+		this.modalClose.classList.add('e_close');
+		this.modalClose.classList.add('e_cta');
+		this.modalClose.classList.add('e_secondary_btn');
+		this.modalClose.innerText = 'Close preferences';
+		this.modalClose.addEventListener('click', this.modalCta.bind(this));
 
-		content.appendChild(close);
+		content.appendChild(this.modalClose);
 
 		this.modal.appendChild(content);
 
@@ -249,7 +237,7 @@ class EtherCookies
 
 		Cookies.set(this.state.cookieName, 'false', { expires: cookieLength, path: '/' });
 
-		this.state.stage = 'declined';
+		window.location.reload();
 	}
 
 	acceptCookies(refresh = false)
@@ -260,15 +248,7 @@ class EtherCookies
 		Cookies.set(this.state.cookieName, 'true', { expires: cookieLength, path: '/' });
 		Cookies.set(this.state.cookieName + '_time', time, { cookieLength, path: '/' });
 
-		if(refresh)
-		{
-			window.location.reload();
-			return;
-		}
-
-		this.state.stage = 'accepted';
-
-		this.updateText();
+		window.location.reload();
 	}
 
 	toggleCookies(e)
@@ -279,6 +259,47 @@ class EtherCookies
 		switch(e.target.checked)
 		{
 			case true:
+				this.state.stage = 'accepted';
+			break;
+
+			default:
+				this.state.stage = 'declined';
+			break;
+		}
+
+		this.modalClose.innerText = 'Save preferences';
+		this.modalClose.classList.remove('e_secondary_btn');
+		this.modalClose.classList.add('e_primary_btn');
+
+		this.updated = true;
+	}
+
+	popoverCta()
+	{
+		switch(this.state.stage)
+		{
+			case 'declined':
+			case 'accepted':
+				this.openModal();
+			break;
+
+			default:
+				this.acceptCookies();
+			break;
+		}
+	}
+
+	modalCta()
+	{
+		if(!this.updated)
+		{
+			this.closeModal();
+			return;
+		}
+
+		switch(this.state.stage)
+		{
+			case 'accepted':
 				this.acceptCookies();
 			break;
 
@@ -286,6 +307,14 @@ class EtherCookies
 				this.declineCookies();
 			break;
 		}
+	}
+
+	togglePopover()
+	{
+		this.popover.classList.toggle('hidden');
+
+		if(this.state.stage !== 'default')
+			this.btn.classList.toggle('managed');
 	}
 
 	openModal()
@@ -297,34 +326,6 @@ class EtherCookies
 	closeModal()
 	{
 		this.modal.classList.remove('active');
-	}
-
-	cta()
-	{
-		switch(this.state.stage)
-		{
-			case 'accepted':
-				this.closeCookies();
-			break;
-
-			case 'declined':
-			case 'already_accepted':
-				this.openModal();
-			break;
-
-			default:
-				this.acceptCookies(true);
-			break;
-		}
-	}
-
-	updateText()
-	{
-		this.stage = this.state[this.state.stage];
-
-		this.closeBtn.innerText = this.stage.close;
-		this.acceptBtn.innerText = this.stage.accept;
-		this.description.innerHTML = this.stage.description;
 	}
 }
 
