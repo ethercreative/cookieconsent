@@ -11,7 +11,7 @@ class CookieConsentService extends BaseApplicationComponent
 		$icon = UrlHelper::getResourceUrl('cookieconsent/images/' . strtolower($settings->cookieIcon) . '.png');
 		$cookieName = $settings->cookieName;
 		$accepted = isset($_COOKIE[$cookieName]) ? $_COOKIE[$cookieName] : null;
-		$time = isset($_COOKIE[$cookieName . '_time']) ? $_COOKIE[$cookieName . '_time'] ? 0;
+		$time = isset($_COOKIE[$cookieName . '_time']) ? $_COOKIE[$cookieName . '_time'] : 0;
 		$stage = 'default';
 
 		if($accepted === 'false')
