@@ -25,7 +25,7 @@ class EtherCookies
 		this.popover.id = 'ether_cookies';
 
 		if(this.state.stage !== 'default')
-			this.popover.classList.add('hidden');
+			this.popover.classList.add('e_hidden');
 
 		// top bar
 
@@ -69,7 +69,7 @@ class EtherCookies
 
 		document.body.appendChild(this.popover);
 
-		setTimeout(() => this.popover.classList.add('active'), 1500);
+		setTimeout(() => this.popover.classList.add('e_active'), 1500);
 	}
 
 	createBtn()
@@ -79,7 +79,7 @@ class EtherCookies
 		this.btn.addEventListener('click', this.togglePopover.bind(this));
 
 		if(this.state.stage !== 'default')
-			this.btn.classList.add('managed');
+			this.btn.classList.add('e_managed');
 
 		const cookie = document.createElement('img');
 		cookie.src = this.state.icon;
@@ -88,7 +88,7 @@ class EtherCookies
 
 		document.body.appendChild(this.btn);
 
-		setTimeout(() => this.btn.classList.add('active'), 1000);
+		setTimeout(() => this.btn.classList.add('e_active'), 1000);
 	}
 
 	createModal()
@@ -161,6 +161,9 @@ class EtherCookies
 			const label = document.createElement('label');
 			label.classList.add('e_label');
 
+			if(!toggle.enabled)
+				label.classList.add('e_disabled');
+
 			const checkbox = document.createElement('input');
 			checkbox.type = 'checkbox';
 			checkbox.checked = toggle.checked;
@@ -176,7 +179,7 @@ class EtherCookies
 			label.appendChild(small);
 
 			const lightswitch = document.createElement('div');
-			lightswitch.classList.add('lightswitch');
+			lightswitch.classList.add('e_lightswitch');
 
 			label.appendChild(lightswitch);
 
@@ -227,8 +230,8 @@ class EtherCookies
 		if(this.state.stage.indexOf('accepted') === -1)
 			this.declineCookies();
 
-		this.popover.classList.add('hidden');
-		this.btn.classList.toggle('managed');
+		this.popover.classList.add('e_hidden');
+		this.btn.classList.toggle('e_managed');
 	}
 
 	declineCookies()
@@ -311,21 +314,21 @@ class EtherCookies
 
 	togglePopover()
 	{
-		this.popover.classList.toggle('hidden');
+		this.popover.classList.toggle('e_hidden');
 
 		if(this.state.stage !== 'default')
-			this.btn.classList.toggle('managed');
+			this.btn.classList.toggle('e_managed');
 	}
 
 	openModal()
 	{
 		this.togglePopover();
-		this.modal.classList.add('active');
+		this.modal.classList.add('e_active');
 	}
 
 	closeModal()
 	{
-		this.modal.classList.remove('active');
+		this.modal.classList.remove('e_active');
 	}
 }
 

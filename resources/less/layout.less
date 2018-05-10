@@ -30,12 +30,12 @@
 	font-size: 13px;
 	color: @grey;
 
-	&.active {
+	&.e_active {
 		opacity: 1;
 		transform: translate3d(0, 0, 0);
 	}
 
-	&.hidden {
+	&.e_hidden {
 		pointer-events: none;
 		opacity: 0;
 		transform: translate3d(0, 15px, 0);
@@ -105,12 +105,12 @@
 	transform-origin: bottom left;
 	transition: opacity 0.5s ease, transform 0.5s ease;
 
-	&.active {
+	&.e_active {
 		opacity: 1;
 		transform: translate3d(0, 0, 0);
 	}
 
-	&.managed {
+	&.e_managed {
 		transform: scale(0.7);
 		transform-origin: bottom left;
 	}
@@ -120,7 +120,7 @@
 		transition: opacity 0.5s ease;
 	}
 
-	&.managed img {
+	&.e_managed img {
 		opacity: 0.5;
 	}
 }
@@ -139,7 +139,7 @@
 	font-size: 13px;
 	color: @grey;
 
-	&.active {
+	&.e_active {
 		pointer-events: all;
 		opacity: 1;
 	}
@@ -149,7 +149,7 @@
 		transition: transform 0.3s ease;
 	}
 
-	&.active .e_content {
+	&.e_active .e_content {
 		opacity: 1;
 		transform: scale(1);
 	}
@@ -251,7 +251,7 @@
 				color: @green;
 			}
 
-			.lightswitch {
+			.e_lightswitch {
 				background: #ced4d9;
 				width: 50px;
 				height: 30px;
@@ -275,7 +275,7 @@
 				}
 			}
 
-			input:checked ~ .lightswitch {
+			input:checked ~ .e_lightswitch {
 				background: @green;
 
 				&::before {
