@@ -89,6 +89,11 @@ ether_script.src = '{$js}';
 ether_script.defer = true;
 document.body.appendChild(ether_script);
 ");
+
+		if($settings->scriptInclude !== '' && $accepted === 'true')
+			return TemplateHelper::getRaw(craft()->templates->render($settings->scriptInclude));
+
+		return;
 	}
 
 	public function checkConsent()
