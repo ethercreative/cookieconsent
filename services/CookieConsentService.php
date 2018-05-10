@@ -76,7 +76,7 @@ class CookieConsentService extends BaseApplicationComponent
 const ether_style = document.createElement('link');
 ether_style.href = '{$css}';
 ether_style.rel = 'stylesheet';
-document.body.appendChild(ether_style);
+document.head.appendChild(ether_style);
 ");
 
 		$js = UrlHelper::getResourceUrl('cookieconsent/js/cookies.min.js');
