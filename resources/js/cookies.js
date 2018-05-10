@@ -57,8 +57,12 @@ class EtherCookies
 		this.acceptBtn = document.createElement('a');
 		this.acceptBtn.classList.add('e_accept');
 		this.acceptBtn.classList.add('e_cta');
+		this.acceptBtn.classList.add('e_primary_btn');
 		this.acceptBtn.innerText = this.stage.accept;
 		this.acceptBtn.addEventListener('click', this.cta.bind(this));
+
+		if(this.state.stage !== 'default')
+			this.acceptBtn.classList.add('e_secondary_btn');
 
 		this.popover.appendChild(this.acceptBtn);
 
@@ -213,6 +217,7 @@ class EtherCookies
 		const close = document.createElement('a');
 		close.classList.add('e_close');
 		close.classList.add('e_cta');
+		close.classList.add('e_secondary_btn');
 		close.innerText = 'Close preferences';
 		close.addEventListener('click', this.closeModal.bind(this));
 

@@ -173,8 +173,8 @@ class CookieConsentPlugin extends BasePlugin
 		return array(
 			/** Settings Page **/
 			'cookieIcon' => array(AttributeType::String, 'label' => 'Cookie Icon', 'default' => ''),
-			'primaryColor' => array(AttributeType::String, 'label' => 'Primary Color', 'default' => ''),
-			'secondaryColor' => array(AttributeType::String, 'label' => 'Secondary Color', 'default' => ''),
+			'primaryColor' => array(AttributeType::String, 'label' => 'Primary Color', 'default' => '#3869d4'),
+			'secondaryColor' => array(AttributeType::String, 'label' => 'Secondary Color', 'default' => '#6f7c8b'),
 			'scriptInclude' => array(AttributeType::String, 'label' => 'Script Include', 'default' => ''),
 			'consentExpiry' => array(AttributeType::String, 'label' => 'Consent Expiry', 'default' => ''),
 			'nonConsentExpiry' => array(AttributeType::String, 'label' => 'Non-Consent Expiry', 'default' => ''),

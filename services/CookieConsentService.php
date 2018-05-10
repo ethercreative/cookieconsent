@@ -88,6 +88,20 @@ ether_script.defer = true;
 document.body.appendChild(ether_script);
 ");
 
+		craft()->templates->includeCss("
+.e_primary_btn {
+	background-color: {$settings->primaryColor} !important;
+}
+
+.e_secondary_btn {
+	background-color: {$settings->secondaryColor} !important;
+}
+
+#ether_cookies p a, #ether_cookies_modal p a {
+	color: {$settings->primaryColor} !important;
+}
+");
+
 		if($settings->scriptInclude !== '' && $accepted === 'true')
 			return TemplateHelper::getRaw(craft()->templates->render($settings->scriptInclude));
 
