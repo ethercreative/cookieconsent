@@ -114,6 +114,14 @@
 	value: settings['consentStatusNo'],
 }) }}
 
+{{ forms.textField({
+	id: 'prefSubtitle',
+	instructions: 'This is the subtitle of the preferences modal.',
+	label: 'Preferences Subtitle',
+	name: 'prefSubtitle',
+	value: settings['prefSubtitle'],
+}) }}
+
 {{ forms.textAreaField({
 	class: 'redactorField',
 	id: 'prefOverview',

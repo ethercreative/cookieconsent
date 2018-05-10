@@ -14,8 +14,6 @@ class CookieConsentService extends BaseApplicationComponent
 		$time = $_COOKIE[$cookieName . '_time'] ?? 0;
 		$stage = 'default';
 
-		print_r($_SERVER);
-
 		if($accepted === 'false')
 			$stage = 'declined';
 
@@ -51,7 +49,7 @@ class CookieConsentService extends BaseApplicationComponent
 			'modal' => [
 				'title' => 'Cookie Preferences',
 				'close' => 'Close',
-				'subtitle' => 'How can I change my cookie settings?',
+				'subtitle' => $settings->prefSubtitle,
 				'description' => $settings->prefOverview,
 				'switches' => [
 					'necessary' => [
