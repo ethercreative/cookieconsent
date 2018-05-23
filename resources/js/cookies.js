@@ -37,7 +37,8 @@ class EtherCookies
 
 		top.appendChild(title);
 
-		this.closeBtn = document.createElement('a');
+		this.closeBtn = document.createElement('button');
+		this.closeBtn.classList.add('e_button');
 		this.closeBtn.innerText = this.stage.close;
 		this.closeBtn.addEventListener('click', this.closeCookies.bind(this));
 
@@ -55,7 +56,8 @@ class EtherCookies
 
 		// button
 
-		this.acceptBtn = document.createElement('a');
+		this.acceptBtn = document.createElement('button');
+		this.acceptBtn.classList.add('e_button');
 		this.acceptBtn.classList.add('e_accept');
 		this.acceptBtn.classList.add('e_cta');
 		this.acceptBtn.classList.add('e_primary_btn');
@@ -74,7 +76,8 @@ class EtherCookies
 
 	createBtn()
 	{
-		this.btn = document.createElement('a');
+		this.btn = document.createElement('button');
+		this.btn.classList.add('e_button');
 		this.btn.id = 'ether_cookies_btn';
 		this.btn.addEventListener('click', this.togglePopover.bind(this));
 
@@ -119,7 +122,8 @@ class EtherCookies
 
 		top.appendChild(title);
 
-		const closeBtn = document.createElement('a');
+		const closeBtn = document.createElement('button');
+		closeBtn.classList.add('e_button');
 		closeBtn.innerText = this.state.modal.close;
 		closeBtn.addEventListener('click', this.closeModal.bind(this));
 
@@ -205,7 +209,8 @@ class EtherCookies
 
 		content.appendChild(switches);
 
-		this.modalClose = document.createElement('a');
+		this.modalClose = document.createElement('button');
+		this.modalClose.classList.add('e_button');
 		this.modalClose.classList.add('e_close');
 		this.modalClose.classList.add('e_cta');
 		this.modalClose.classList.add('e_secondary_btn');
@@ -227,8 +232,11 @@ class EtherCookies
 
 	closeCookies()
 	{
-		if(this.state.stage.indexOf('accepted') === -1)
+		if(Cookies.get(this.state.cookieName) === undefined)
+		{
 			this.declineCookies();
+			return;
+		}
 
 		this.popover.classList.add('e_hidden');
 		this.btn.classList.toggle('e_managed');
@@ -236,6 +244,8 @@ class EtherCookies
 
 	declineCookies()
 	{
+		Object.keys(Cookies.get()).map(key => Cookies.remove(key));
+
 		const cookieLength = parseInt(this.state.cookieLength);
 
 		Cookies.set(this.state.cookieName, 'false', { expires: cookieLength });
