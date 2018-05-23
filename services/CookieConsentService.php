@@ -116,6 +116,6 @@ document.head.appendChild(ether_style);
 		$cookieName = $settings->cookieName;
 		$accepted = isset($_COOKIE[$cookieName]) ? $_COOKIE[$cookieName] : null;
 
-		return $accepted;
+		return $accepted === 'true';
 	}
 }
