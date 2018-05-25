@@ -15,6 +15,7 @@ class EtherCookies
 		this.createPopover();
 		this.createBtn();
 		this.createModal();
+		this.useHash();
 	}
 
 	createPopover()
@@ -330,15 +331,37 @@ class EtherCookies
 			this.btn.classList.toggle('e_managed');
 	}
 
-	openModal()
+	openModal(forced = false)
 	{
-		this.togglePopover();
+		if(!forced)
+			this.togglePopover();
+
 		this.modal.classList.add('e_active');
 	}
 
 	closeModal()
 	{
 		this.modal.classList.remove('e_active');
+
+		if(window.location.hash === this.hashName)
+			window.location.hash = '_';
+	}
+
+	useHash()
+	{
+		this.hashName = '#openCookies';
+
+		if(window.location.hash === this.hashName)
+			this.openModal(true);
+
+		window.addEventListener('hashchange', () =>
+		{
+			if(window.location.hash === this.hashName)
+			{
+				this.openModal(true);
+				return;
+			}
+		});
 	}
 }
 
