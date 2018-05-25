@@ -114,12 +114,16 @@
 		transform-origin: bottom left;
 	}
 
-	img {
+	.e_cookie {
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center;
 		width: 72%;
+		height: 72%;
 		transition: opacity 0.5s ease;
 	}
 
-	&.e_managed img {
+	&.e_managed .e_cookie {
 		opacity: 0.5;
 	}
 }

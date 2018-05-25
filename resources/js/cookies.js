@@ -77,7 +77,7 @@ class EtherCookies
 
 	createBtn()
 	{
-		this.btn = document.createElement('button');
+		this.btn = document.createElement('a');
 		this.btn.classList.add('e_button');
 		this.btn.id = 'ether_cookies_btn';
 		this.btn.addEventListener('click', this.togglePopover.bind(this));
@@ -85,8 +85,9 @@ class EtherCookies
 		if(this.state.stage !== 'default')
 			this.btn.classList.add('e_managed');
 
-		const cookie = document.createElement('img');
-		cookie.src = this.state.icon;
+		const cookie = document.createElement('div');
+		cookie.classList.add('e_cookie');
+		cookie.style.backgroundImage = 'url(' + this.state.icon + ')';
 
 		this.btn.appendChild(cookie);
 
