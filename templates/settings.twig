@@ -38,6 +38,25 @@
 	value: settings['cookieIcon'],
 }) }}
 
+{{ forms.elementSelectField({
+	addButtonLabel: 'Upload Icon',
+	criteria: {
+		'kind': [],
+		'localeEnabled': null,
+		'locale': 'en_gb'
+	},
+	elements: settings.cookieIconAsset|length ? craft.assets.id(settings.cookieIconAsset) : null,
+	elementType: craft.elements.getElementType('Asset'),
+	jsClass: 'Craft.AssetSelectInput',
+	id: 'cookieIconAsset',
+	instructions: 'Upload the icon you\'d like to use for the front end (this will override the setting above).',
+	label: 'Cookie Icon Upload',
+	limit: 1,
+	name: 'cookieIconAsset',
+	sources: ['folder:1'],
+	value: settings['cookieIcon'],
+}) }}
+
 {{ forms.colorField({
 	id: 'primaryColor',
 	instructions: 'Set the primary color to be used on the cookie widget.',

@@ -173,6 +173,7 @@ class CookieConsentPlugin extends BasePlugin
 		return array(
 			/** Settings Page **/
 			'cookieIcon' => array(AttributeType::String, 'label' => 'Cookie Icon', 'default' => ''),
+			'cookieIconAsset' => array(AttributeType::Mixed, 'label' => 'Cookie Icon Upload', 'default' => ''),
 			'primaryColor' => array(AttributeType::String, 'label' => 'Primary Color', 'default' => '#3869d4'),
 			'secondaryColor' => array(AttributeType::String, 'label' => 'Secondary Color', 'default' => '#6f7c8b'),
 			'scriptInclude' => array(AttributeType::String, 'label' => 'Script Include', 'default' => ''),

@@ -9,6 +9,10 @@ class CookieConsentService extends BaseApplicationComponent
 
 		$url = str_replace('www.', '', $_SERVER['SERVER_NAME']);
 		$icon = UrlHelper::getResourceUrl('cookieconsent/images/' . strtolower($settings->cookieIcon) . '.png');
+
+		if($settings->cookieIconAsset !== '')
+			$icon = craft()->assets->getFileById($settings->cookieIconAsset)->url;
+
 		$cookieName = $settings->cookieName;
 		$accepted = isset($_COOKIE[$cookieName]) ? $_COOKIE[$cookieName] : null;
 		$time = isset($_COOKIE[$cookieName . '_time']) ? $_COOKIE[$cookieName . '_time'] : 0;
@@ -32,7 +36,7 @@ class CookieConsentService extends BaseApplicationComponent
 			'stage' => $stage,
 			'title' => 'Cookie Consent',
 			'default' => [
-				'close' => 'No thanks!',
+				'close' => 'No thanks',
 				'accept' => 'Accept cookies on ' . $url,
 				'description' => $settings->requestMessage
 			],
